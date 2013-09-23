@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  	<meta charset="utf-8" />
+  	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  	<title>Zillow Question 1</title>
+  	<meta name="description" content="" />
+  	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<style>
+		body {margin:0px;}
+		#content {overflow: hidden;text-align: center}
+		#column-1 {float: left;width: 170px;background-color:#000;color:#fff;}
+		#column-2 {position:absolute;left:170px;right:200px;background-color:#ccc;}
+		#column-3 {float: right;width: 200px;background-color:#000;color:#fff;}
+
+		@media (max-width: 719px) {
+			#content > div {float:left;width: 100%;}
+			#column-2 {position:static;}
+		}
+	</style>
+</head>
+<body>
+	<div id="content">
+		<div id="column-1">1</div>
+		<div id="column-2">2</div>
+		<div id="column-3">3</div>
+	</div>
+</body>
+</html>

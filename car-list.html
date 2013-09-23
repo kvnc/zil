@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  	<meta charset="utf-8" />
+  	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  	<title>Zillow Question 2</title>
+  	<meta name="description" content="" />
+  	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+<body>
+	<div id="content"></div>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" ></script>
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.0.0/handlebars.min.js" ></script>
+	<script id="carList-template" type="text/x-handlebars-template">
+		<div id="carList">
+			<ul>
+				{{#each cars}}
+					<li>{{name}} (MPG:{{mpg}}) - ${{price}}</li>
+			  	{{/each}}
+			</ul>
+		</div>
+	</script>
+	<script type="text/javascript">
+		$(function() {
+	    	$.getJSON('carList.json',function(json){
+	    		json.automobiles.sort(app.sortByMpg);
+	    		app.renderCars(json.automobiles);
+	    	});
+		});
+
+		var app = (function(){
+			return {
+				sortByMpg: function(x,y) {
+		      		return ((x.mpg == y.mpg) ? 0 : ((x.mpg > y.mpg) ? 1 : -1 ));
+		    	},
+
+				renderCars: function(cars) {
+					var template = Handlebars.compile($("#carList-template").html());
+					$('#content').html(template({'cars':cars}));
+				}
+			};
+		})();
+	</script>
+</body>
+</html>
